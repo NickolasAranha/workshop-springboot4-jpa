@@ -25,4 +25,12 @@ public class UserService {
     public User insert(User obj) {
         return repository.save(obj);
     }
+
+    public void delete(Long id) {
+        if(repository.existsById(id)) {
+            repository.deleteById(id);
+        } else {
+            throw new RuntimeException("User with id " + id + " does not exist");
+        }
+    }
 }
